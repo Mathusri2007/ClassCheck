@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Student Attendance Management System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header><h1>Student Attendance Management System</h1></header>
+  <nav>
+    <button class="tab active" data-tab="students">Students</button>
+    <button class="tab" data-tab="mark">Mark Attendance</button>
+    <button class="tab" data-tab="report">Reports</button>
+  </nav>
+  <main>
+    <section id="students" class="panel active">
+      <form id="student-form" class="row">
+        <input id="roll" placeholder="Roll No" required>
+        <input id="name" placeholder="Student Name" required>
+        <input id="cls" placeholder="Class (e.g. 10-A)">
+        <button type="submit">Add Student</button>
+      </form>
+      <table><thead><tr><th>Roll No</th><th>Name</th><th>Class</th><th></th></tr></thead>
+        <tbody id="student-body"></tbody></table>
+    </section>
+
+    <section id="mark" class="panel">
+      <div class="row">
+        <label>Date <input type="date" id="mark-date"></label>
+        <button id="all-present" type="button" class="secondary">Mark All Present</button>
+        <button id="save-att" type="button">Save Attendance</button>
+      </div>
+      <table><thead><tr><th>Roll No</th><th>Name</th><th>Present</th><th>Absent</th></tr></thead>
+        <tbody id="mark-body"></tbody></table>
+    </section>
+
+    <section id="report" class="panel">
+      <div class="row">
+        <label>From <input type="date" id="from"></label>
+        <label>To <input type="date" id="to"></label>
+        <button id="gen" type="button">Generate</button>
+        <a id="csv" class="btn secondary" href="/api/report.csv">Download CSV</a>
+      </div>
+      <table><thead><tr><th>Roll No</th><th>Name</th><th>Class</th><th>Days</th>
+        <th>Present</th><th>Absent</th><th>Attendance %</th></tr></thead>
+        <tbody id="report-body"></tbody></table>
+      <p class="note">Students below 75% are highlighted.</p>
+    </section>
+  </main>
+  <div id="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>
